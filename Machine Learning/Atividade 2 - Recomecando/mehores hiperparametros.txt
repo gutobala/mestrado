@@ -1,0 +1,50 @@
+Fitting 5 folds for each of 14 candidates, totalling 70 fits
+
+Ridge best params: {'model__alpha': 300, 'model__fit_intercept': True}
+Ridge best CV RMSE(log): 1.4475951029711485
+Fitting 5 folds for each of 54 candidates, totalling 270 fits
+
+ExtraTrees Stage1 best params: {'model__max_depth': 30, 'model__max_features': 0.7, 'model__min_samples_leaf': 1, 'model__n_estimators': 800}
+ExtraTrees Stage1 best CV RMSE(log): 0.28858086854914006
+Fitting 5 folds for each of 324 candidates, totalling 1620 fits
+
+ExtraTrees Stage2 best params: {'model__max_depth': 25, 'model__max_features': 0.7, 'model__min_samples_leaf': 1, 'model__min_samples_split': 2, 'model__n_estimators': 1200}
+ExtraTrees Stage2 best CV RMSE(log): 0.2880292537936281
+Fitting 5 folds for each of 162 candidates, totalling 810 fits
+
+HistGradientBoosting best params: {'model__l2_regularization': 0.1, 'model__learning_rate': 0.06, 'model__max_depth': None, 'model__max_iter': 300, 'model__min_samples_leaf': 10}
+HistGradientBoosting best CV RMSE(log): 0.29663300263749626
+
+
+=================================================
+
+09/04
+
+Fitting 5 folds for each of 14 candidates, totalling 70 fits
+
+Ridge best params: {'model__alpha': 300, 'model__fit_intercept': True}
+Ridge best CV RMSE(log): 1.4475951029711485
+Fitting 5 folds for each of 54 candidates, totalling 270 fits
+
+ExtraTrees Stage1 best params: {'model__max_depth': 30, 'model__max_features': 0.7, 'model__min_samples_leaf': 1, 'model__n_estimators': 800}
+ExtraTrees Stage1 best CV RMSE(log): 0.2885808685491401
+Fitting 5 folds for each of 324 candidates, totalling 1620 fits
+
+ExtraTrees Stage2 best params: {'model__max_depth': 25, 'model__max_features': 0.7, 'model__min_samples_leaf': 1, 'model__min_samples_split': 2, 'model__n_estimators': 1200}
+ExtraTrees Stage2 best CV RMSE(log): 0.28802925379362787
+Fitting 5 folds for each of 162 candidates, totalling 810 fits
+
+HistGradientBoosting best params: {'model__l2_regularization': 0.1, 'model__learning_rate': 0.06, 'model__max_depth': None, 'model__max_iter': 300, 'model__min_samples_leaf': 10}
+HistGradientBoosting best CV RMSE(log): 0.29663300263749626
+Fitting 5 folds for each of 96 candidates, totalling 480 fits
+
+DecisionTreeRegressor best params: {'model__max_depth': None, 'model__min_samples_leaf': 2, 'model__min_samples_split': 10}
+DecisionTreeRegressor best CV RMSE(log): 0.35088966911873987
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+
+KNeighborsRegressor best params: {'model__n_neighbors': 5, 'model__p': 1, 'model__weights': 'distance'}
+KNeighborsRegressor best CV RMSE(log): 0.5458750989727615
+Fitting 5 folds for each of 18 candidates, totalling 90 fits
+
+SVR (RBF) best params: {'model__C': 10, 'model__epsilon': 0.05, 'model__gamma': 'scale'}
+SVR (RBF) best CV RMSE(log): 0.40517653801378345

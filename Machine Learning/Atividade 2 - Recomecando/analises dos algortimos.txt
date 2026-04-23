@@ -1,0 +1,102 @@
+1) DecisionTreeRegressor
+
+Treino
+
+R² 0,54 (fraco/moderado)
+RMSE 6,18M (alto)
+
+Teste
+
+R² 0,76
+MAE 454k
+RMSE 1,78M
+RMSE(log) 0,392
+
+✅ Interpretação: árvore única é instável e não tão forte. Aqui ela não “decorou” o treino (R² baixo no treino), mas generaliza razoavelmente. Serve como baseline interpretável, mas não é top performance.
+
+2) KNeighborsRegressor
+
+Treino
+
+Tudo ~0 e R²=1.0 (perfeito)
+
+Teste
+
+MAE 432k
+RMSE 1,41M
+R² 0,849
+RMSE(log) 0,536 (ruim)
+
+⚠️ Interpretação: isso é um sinal clássico de “memorizar o treino” no KNN — especialmente se n_neighbors=1 (não é o seu caso, mas mesmo com k=5, em dados com muitas dummies pode acontecer algo parecido dependendo do preprocessing/densidade).
+O treino perfeito + teste bem pior = overfitting. E o RMSE(log) alto indica que ele erra proporcionalmente bastante (ruim para valores baixos/médios).
+
+✅ Ele não é o melhor para esse tipo de dado tabular com one-hot.
+
+3) SVR (RBF)
+
+Treino
+
+R² 0,997 (muito alto), MAE 61k
+
+Teste
+
+MAE 360k
+RMSE 1,44M
+R² 0,843
+RMSE(log) 0,366
+
+✅ Interpretação: SVR está forte, mas ainda perde para ExtraTrees. Ele overfita um pouco (treino muito alto), mas generaliza decentemente. É um bom modelo “exigido” pela professora.
+
+4) Ridge
+
+Treino e teste horríveis (R² extremamente negativo)
+
+Ridge está quebrando por extrapolação com dummies/categorias raras (você já viu previsões bilionárias antes).
+
+✅ Interpretação: modelo linear é inadequado para essa base com alta cardinalidade e não linearidades. Pode manter como “baseline ruim”, mas não como candidato real.
+
+5) ExtraTrees (Stage2 Best) — campeão disparado
+
+Treino
+
+Quase perfeito (R² ~ 1.0), MAE ~ 7,6k
+
+Teste
+
+MAE 237k ✅ melhor
+RMSE 953k ✅ melhor
+R² 0,931 ✅ melhor
+MAPE 17,3% ✅ melhor
+RMSE(log) 0,262 ✅ melhor
+
+✅ Interpretação: é o melhor modelo do seu experimento.
+O treino perfeito mostra que ele consegue ajustar muito, mas o teste também está excelente, então não é “overfitting destrutivo”: ele generaliza muito bem.
+
+6) HistGradientBoosting
+
+Treino
+
+R² 0,656 (moderado)
+
+Teste
+
+MAE 363k
+RMSE 1,66M
+R² 0,790
+RMSE(log) 0,296
+
+✅ Interpretação: bom modelo, mas ficou claramente atrás do ExtraTrees no seu conjunto. Ainda assim, é defendável como segundo melhor, especialmente se você quiser argumentar estabilidade no log.
+
+O que a tabela final está te dizendo
+
+Ordenando por MAE no teste, o ranking fica:
+
+✅ ExtraTrees (melhor em tudo que importa no teste)
+✅ SVR (melhor entre os “exigidos” junto com KNN/DT)
+✅ HistGB (ok, mas abaixo do SVR em MAE/RMSE)
+⚠️ KNN (treino perfeito → overfit; RMSE(log) ruim)
+⚠️ DecisionTree (baseline, mas fraco)
+❌ Ridge (falhou feio)
+Observação importante: treino “perfeito” do KNN e do ExtraTrees
+No ExtraTrees, treino perfeito é comum porque é um ensemble bem expressivo — mas o que importa é que o teste também é muito bom.
+No KNN, treino perfeito costuma ser sinal de que o modelo está “colando” nos dados, e como o teste piora bastante, ele não compensa.
